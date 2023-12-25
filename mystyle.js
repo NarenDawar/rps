@@ -16,7 +16,7 @@ function getComputerChoice() {
 }
 
 
-function verifyUserInput() {
+function UserInput() {
     let userPick = prompt("Enter one of the options: ");
     if (userPick.toLowerCase() === "rock") {
         userPick = "rock";
@@ -74,34 +74,6 @@ function roundSimulate(computerResult, userResult) {
     }
 }
 
-function game() {
-    let userScore = 0;
-    let computerScore = 0;
-
-    for(let i = 0; i < 5; i++) {
-        let comp = getComputerChoice();
-        let usa = verifyUserInput();
-        let val = (roundSimulate(comp, usa));
-        console.log(val);
-        if(val.includes("User wins")) {
-            userScore++;
-        }
-        else if(val.includes("Computer wins")) {
-            computerScore++;
-        }
-        else {
-            continue;
-        }
-    }
-    if(userScore > computerScore) {
-        return "User wins!";
-    }
-    else if(userScore < computerScore) {
-        return "Computer wins!";
-    }
-    else {
-        return "Tie!";
-    }
+function onClick(entry) {
+    roundSimulate(computerAns, userAns);
 }
-
-console.log(game());
