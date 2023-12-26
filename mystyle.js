@@ -1,19 +1,4 @@
-function getComputerChoice() {
-    let computerPick;
-    const number = Math.floor(Math.random()*3)+1;
-    if(number == 1) {
-        computerPick = "rock";
-        return computerPick;
-    }
-    else if(number == 2) {
-        computerPick = "paper";
-        return computerPick;
-    }
-    else {
-        computerPick = "scissors";
-        return computerPick;
-    }
-}
+
 
 
 function UserInput() {
@@ -74,6 +59,89 @@ function roundSimulate(computerResult, userResult) {
     }
 }
 
+
+
 function onClick(entry) {
-    roundSimulate(computerAns, userAns);
+    let computerAns = getComputerChoice();
+    roundSimulate(computerAns, entry);
+}
+
+const playerDis = document.querySelector('#playerDis');
+const computerDis = document.querySelector('#computerDis');
+const resultDis = document.querySelector('#resultDis');
+const buttons = document.querySelectorAll('.buttons');
+const userCount = document.querySelector('#userDis');
+const AICount = document.querySelector('#AIDis');
+let player;
+let computer;
+let result;
+let userPoints = 0;
+let computerPoints = 0;
+
+buttons.forEach(button => button.addEventListener("click", () => {
+
+    player = button.textContent;
+    getComputerChoice();
+    playerDis.textContent = `Player: ${player}`;
+    computerDis.textContent = `Computer: ${computer}`;
+    resultDis.textContent = `Result: ${checkWinner()}`;
+    userCount.textContent = `User Points: ${userPoints}`;
+    AICount.textContent = `Computer Points: ${computerPoints}`;
+}))
+
+function checkWinner() {
+    
+    if(computer == player) {
+        return "Undecided";
+    }
+    else if(computer == "rock") {
+        (player == "paper") ? userPoints++ : computerPoints++
+        if(userPoints == 5) {
+            return "You win!";
+        }
+        else if (computerPoints == 5){
+            return "You lost";
+        }
+        else {
+            return "Undecided";
+        }
+    }
+    else if(computer == "paper") {
+        (player == "scissors") ? userPoints++ : computerPoints++
+        if(userPoints == 5) {
+            return "You win!";
+        }
+        else if (computerPoints == 5){
+            return "You lost";
+        }
+        else {
+            return "Undecided";
+        }
+    }
+    else if(computer == "scissors") {
+        (player == "rock") ? userPoints++ : computerPoints++
+        if(userPoints == 5) {
+            return "You win!";
+        }
+        else if (computerPoints == 5){
+            return "You lost";
+        }
+        else {
+            return "Undecided";
+        }
+    }
+    
+}
+
+function getComputerChoice() {
+    const number = Math.floor(Math.random()*3)+1;
+    if(number == 1) {
+        computer = "rock";
+    }
+    else if(number == 2) {
+        computer = "paper";
+    }
+    else {
+        computer = "scissors";
+    }
 }

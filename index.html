@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="mystyle.js"></script>
-    <link rel="style" href="style.css">
+    <script src="mystyle.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="button">Rock</div>
-    <div class="button">Paper</div>
-    <div class="button">Scissors</div>
+    <div id="container">
+        <h1 class="gameText" id="playerDis">Player: </h1>
+        <h1 class="gameText" id="computerDis">Computer: </h1>
+        <h1 class="gameText" id="resultDis">Result: </h1>
+        <h1 class="gameText" id="userDis">User Points: </h1>
+        <h1 class = "gameText" id="AIDis">Computer Points: </h1>
+        <button class="buttons">rock</button>
+        <button class="buttons">paper</button>
+        <button class="buttons">scissors</button>
+    </div>
 </body>
 </html>
